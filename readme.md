@@ -35,7 +35,7 @@ Pour installer SFMLProject, suivez ces étapes :
 
 1. Clonez le dépôt :
 
-git clone https://github.com/votreusername/SFMLProject.git
+git clone https://github.com/Valo-P/SFMLProject.git
 
 2. Naviguez vers le répertoire du projet :
 
