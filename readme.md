@@ -35,22 +35,30 @@ Pour installer SFMLProject, suivez ces étapes :
 
 1. Clonez le dépôt :
 
+```bash
 git clone https://github.com/Valo-P/SFMLProject.git
+```
 
 2. Naviguez vers le répertoire du projet :
 
+```bash
 cd SFMLProject
+```
 
 3. Construisez le projet :
 
+```bash
 mkdir build
 cd build
 cmake ..
 make
+```
 
 ## Exécution du SFMLProject
 
 Pour exécuter SFMLProject, naviguez vers le répertoire bin/ et exécutez l'exécutable SFMLProject :
 
+```bash
 cd bin
 ./SFMLProject
+```
