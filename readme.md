@@ -16,6 +16,11 @@ sudo apt-get install libsfml-dev
 
 Ou vous pouvez la télécharger depuis le [site officiel de SFML](https://www.sfml-dev.org/download.php).
 
+Dans le CMakeLists.txt, remplacer le répertoire vers le chemin ou est installé SFML.
+```bash
+set(SFML_DIR "/usr/lib/x86_64-linux-gnu/cmake/SFML")
+```
+
 * Vous avez installé GCC.
 
 ```bash
