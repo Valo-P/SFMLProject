@@ -31,13 +31,31 @@ void Game::initWindow()
 
 void Game::initStates()
 {
-    this->states.push(new GameState(this->window));
+    this->states.push(new GameState(this->window, &this->supportedKeys));
+}
+
+void Game::initKeys()
+{
+    std::ifstream ifs("../../config/supportedkeys.ini");
+
+    if(ifs.is_open())
+    {
+        std::string key = "";
+        int key_value = 0;
+        while(ifs >> key >> key_value)
+        {
+            this->supportedKeys[key] = key_value;
+        }
+    }
+
+    ifs.close();
 }
 
 // Constructors/Destructors
 Game::Game(/* args */)
 {
     this->initWindow();
+    this->initKeys();
     this->initStates();
 }
 

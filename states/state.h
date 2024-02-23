@@ -7,14 +7,20 @@ class State
 {
 private:
     sf::RenderWindow* window;
-    std::vector<sf::Texture> textures;
 
     bool quit;
 
+    std::vector<sf::Texture> textures;
+
+    //Functions
+    virtual void initKeybinds() = 0;
+protected:
+    std::map<std::string, int>* supportedKeys;
+    std::map<std::string, int> keybinds;
 
 public:
     //Constructors/Destructors
-    State(sf::RenderWindow* window);
+    State(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys);
     virtual ~State();
 
     const bool& getQuit() const;
@@ -22,7 +28,7 @@ public:
     virtual void endState() = 0;
 
     //Functions
-    virtual void updateKeybinds(const float& dt) = 0;
+    virtual void updateInput(const float& dt) = 0;
     virtual void update(const float& dt) = 0;
     virtual void render(sf::RenderTarget* target = NULL) = 0;
 };
