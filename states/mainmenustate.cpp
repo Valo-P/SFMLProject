@@ -17,10 +17,19 @@ void MainMenuState::initKeybinds()
     ifs.close();
 }
 
+void MainMenuState::initFonts()
+{
+    if(!this->font.loadFromFile("../../ressources/fonts/Monocraft.ttf"))
+    {
+        throw("ERROR::MAINMENUSTATE::COULD NOT LOAD FONT");
+    }
+}
+
 
 MainMenuState::MainMenuState(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys)
     : State(window, supportedKeys)
 {
+    this->initFonts();
     this->initKeybinds();
 
     this->background.setSize(sf::Vector2f(window->getSize().x, window->getSize().y));
@@ -43,7 +52,9 @@ void MainMenuState::updateInput(const float &dt)
 
 void MainMenuState::update(const float &dt)
 {
+    this->updateMousePositions();
     this->updateInput(dt);
+
 }
 
 void MainMenuState::render(sf::RenderTarget* target)
