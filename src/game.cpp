@@ -54,6 +54,11 @@ Game::~Game()
 
 //Functions
 
+void Game::endApplication()
+{
+    std::cout << "Ending Application!" << std::endl;
+}
+
 void Game::updateDt()
 {
     /* Maj de la variable dt avec le temps nécessaire pour update et render une image. */
@@ -75,8 +80,24 @@ void Game::update()
 {
     this->updateSFMLEvents();
 
-    if(!this->states.empty())
+    if(!this->states.empty()) {
         this->states.top()->update(this->dt);
+
+        if (this->states.top()->getQuit())
+        {
+            this->states.top()->endState();
+            delete this->states.top();
+            this->states.pop();
+        }
+        
+    }
+    //End of application
+    else
+    {
+        this->endApplication();
+        this->window->close();
+    }
+    
 
 }
 
