@@ -6,8 +6,6 @@
 class State
 {
 private:
-    sf::RenderWindow* window;
-
     bool quit;
 
     std::vector<sf::Texture> textures;
@@ -15,6 +13,7 @@ private:
     //Functions
     virtual void initKeybinds() = 0;
 protected:
+    sf::RenderWindow* window;
     std::map<std::string, int>* supportedKeys;
     std::map<std::string, int> keybinds;
 
