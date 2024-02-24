@@ -1,6 +1,11 @@
 #include "../states/mainmenustate.h"
 #include "mainmenustate.h"
 
+void MainMenuState::initVariables()
+{
+
+}
+
 void MainMenuState::initKeybinds()
 {
     std::ifstream ifs("../../config/menukeybinds.ini");
@@ -18,11 +23,24 @@ void MainMenuState::initKeybinds()
     ifs.close();
 }
 
+void MainMenuState::initBackground()
+{
+    this->background.setSize(sf::Vector2f(this->window->getSize().x, this->window->getSize().y));
+    if (!this->backgroundTexture.loadFromFile("../../ressources/images/menubackground.png")) {
+        std::cout << "Error loading background texture" << std::endl;
+        this->background.setFillColor(sf::Color(0,0,0,255));
+    } else {
+        this->backgroundTexture.loadFromFile("../../ressources/images/menubackground.png");
+        this->background.setTexture(&this->backgroundTexture);
+    }
+    
+}
+
 void MainMenuState::initButtons()
 {
-    this->buttons["GAME_STATE"] = new Button(100,100,150,50,"New Game",&this->font,sf::Color::Green,sf::Color::Red,sf::Color::Yellow);
-    this->buttons["SETTINGS"] = new Button(100,200,150,50,"Settings",&this->font,sf::Color::Green,sf::Color::Red,sf::Color::Yellow);
-    this->buttons["EXIT_STATE"] = new Button(100,300,150,50,"Quit",&this->font,sf::Color::Green,sf::Color::Red,sf::Color::Yellow);
+    this->buttons["GAME_STATE"] = new Button(270,210,150,50,"New Game",&this->font,sf::Color::Green,sf::Color::Red,sf::Color::Yellow);
+    this->buttons["SETTINGS"] = new Button(270,310,150,50,"Settings",&this->font,sf::Color::Green,sf::Color::Red,sf::Color::Yellow);
+    this->buttons["EXIT_STATE"] = new Button(270,410,150,50,"Quit",&this->font,sf::Color::Green,sf::Color::Red,sf::Color::Yellow);
 }
 
 void MainMenuState::initFonts()
@@ -37,13 +55,11 @@ void MainMenuState::initFonts()
 MainMenuState::MainMenuState(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys,std::stack<State*>* states)
     : State(window, supportedKeys, states)
 {
+    this->initVariables();
+    this->initBackground();
     this->initFonts();
     this->initKeybinds();
     this->initButtons();
-
-    
-    this->background.setSize(sf::Vector2f(window->getSize().x, window->getSize().y));
-    this->background.setFillColor(sf::Color::Blue);
 }
 
 MainMenuState::~MainMenuState()
@@ -107,4 +123,16 @@ void MainMenuState::render(sf::RenderTarget* target)
 
     target->draw(this->background);
     this->renderButtons(*target);
+
+    //TEMP MOUSE POSITION
+    /* 
+    sf::Text mouseText;
+    mouseText.setPosition(this->mousePosView.x, this->mousePosView.y - 50);
+    mouseText.setFont(this->font);
+    mouseText.setCharacterSize(12);
+    std::stringstream ss;
+    ss << this->mousePosView.x << " " << this->mousePosView.y;
+    mouseText.setString(ss.str());
+    target->draw(mouseText);
+    */
 }
