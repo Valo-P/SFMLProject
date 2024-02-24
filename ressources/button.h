@@ -29,6 +29,8 @@ public:
     Button(float x,float y,float width,float height, std::string text, sf::Font* font, sf::Color idleColor, sf::Color hoverColor, sf::Color activeColor);
     ~Button();
 
+    bool isPressed();
+
     //Functions
     void update(const sf::Vector2f mousePos);
     void render(sf::RenderTarget* target);

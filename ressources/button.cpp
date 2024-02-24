@@ -28,6 +28,15 @@ Button::~Button()
     
 }
 
+bool Button::isPressed()
+{
+    if(this->shape.getFillColor() == this->activeColor)
+    {
+        return true;
+    }
+    return false;
+}
+
 void Button::update(const sf::Vector2f mousePos)
 {
     //Idle
