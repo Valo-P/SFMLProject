@@ -49,7 +49,7 @@ void Button::update(const sf::Vector2f mousePos)
     }
 
     //Active
-    if(sf::Mouse::isButtonPressed(sf::Mouse::Left))
+    if(this->shape.getGlobalBounds().contains(mousePos) && sf::Mouse::isButtonPressed(sf::Mouse::Left))
     {
         this->shape.setFillColor(this->activeColor);
     }

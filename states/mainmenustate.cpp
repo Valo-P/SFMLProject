@@ -92,6 +92,7 @@ void MainMenuState::updateButtons()
     if(this->buttons["GAME_STATE"]->isPressed())
     {
         this->states->push(new GameState(this->window, this->supportedKeys, this->states));
+        std::cout << "Game Start !" << std::endl;
     }
 
     //Quit the game
