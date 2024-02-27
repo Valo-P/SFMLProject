@@ -38,9 +38,9 @@ void MainMenuState::initBackground()
 
 void MainMenuState::initButtons()
 {
-    this->buttons["GAME_STATE"] = new Button(270,210,150,50,"New Game",&this->font,sf::Color::Green,sf::Color::Red,sf::Color::Yellow);
-    this->buttons["SETTINGS"] = new Button(270,310,150,50,"Settings",&this->font,sf::Color::Green,sf::Color::Red,sf::Color::Yellow);
-    this->buttons["EXIT_STATE"] = new Button(270,410,150,50,"Quit",&this->font,sf::Color::Green,sf::Color::Red,sf::Color::Yellow);
+    this->buttons["GAME_STATE"] = new Button(270,210,150,50,"New Game",&this->font,sf::Color::White,sf::Color::Red,sf::Color::Yellow);
+    this->buttons["SETTINGS"] = new Button(270,310,150,50,"Settings",&this->font,sf::Color::White,sf::Color::Red,sf::Color::Yellow);
+    this->buttons["EXIT_STATE"] = new Button(270,410,150,50,"Quit",&this->font,sf::Color::White,sf::Color::Red,sf::Color::Yellow);
 }
 
 void MainMenuState::initFonts()
