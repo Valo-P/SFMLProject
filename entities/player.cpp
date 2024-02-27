@@ -7,7 +7,15 @@ void Player::initVariables()
 
 void Player::initComponents()
 {
-    this->createMouvement(*this->sprite,200.f, 10.f, 4.f);
+    this->createMouvement(*this->sprite,250.f, 15.f, 5.f);
+    this->createAnimations(this->sprite, this->texture);
+    this->initAnimations();
+}
+
+void Player::initAnimations() {
+
+    this->animationController->addAnimation("IDLE", 10.f, 1, 1, 4, 1, 86, 86);
+    // this->animationController->addAnimation("WALK", 10.f, 0, 1, 3, 1, 64, 64);
 }
 
 Player::Player(float x, float y, sf::Texture* texture_sheet)

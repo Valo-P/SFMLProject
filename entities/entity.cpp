@@ -14,9 +14,8 @@ Entity::Entity()
 
 Entity::~Entity()
 {
-    delete this->texture;
-    delete this->sprite;
     delete this->mouvement;
+    delete this->animationController;
 }
 
 void Entity::createSprite(sf::Texture *texture_sheet)
@@ -29,6 +28,11 @@ void Entity::createSprite(sf::Texture *texture_sheet)
 void Entity::createMouvement(sf::Sprite& sprite,const float maxVelocity, const float acceleration, const float deceleration)
 {
     this->mouvement = new Mouvement(sprite, maxVelocity, acceleration, deceleration);
+}
+
+void Entity::createAnimations(sf::Sprite *sprite, sf::Texture *textureSheet)
+{
+    this->animationController = new AnimationController(sprite, textureSheet);
 }
 
 void Entity::setPosition(const float x, const float y)

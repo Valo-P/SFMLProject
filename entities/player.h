@@ -9,6 +9,7 @@ private:
     /* data */
     void initVariables();
     void initComponents();
+    void initAnimations();
 
 protected:
     /* data */
