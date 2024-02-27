@@ -4,7 +4,7 @@ void Entity::initVariables()
 {
     this->texture = nullptr;
     this->sprite = nullptr;
-    this->movementSpeed = 100.f;
+    this->mouvement = nullptr;
 }
 
 Entity::Entity()
@@ -16,6 +16,7 @@ Entity::~Entity()
 {
     delete this->texture;
     delete this->sprite;
+    delete this->mouvement;
 }
 
 void Entity::createSprite(sf::Texture *texture_sheet)
@@ -23,6 +24,11 @@ void Entity::createSprite(sf::Texture *texture_sheet)
     this->texture = texture_sheet;
     this->sprite = new sf::Sprite(*this->texture);
     this->sprite->setScale(0.1f, 0.1f);
+}
+
+void Entity::createMouvement(sf::Sprite& sprite,const float maxVelocity, const float acceleration, const float deceleration)
+{
+    this->mouvement = new Mouvement(sprite, maxVelocity, acceleration, deceleration);
 }
 
 void Entity::setPosition(const float x, const float y)
@@ -35,30 +41,17 @@ void Entity::setPosition(const float x, const float y)
 
 void Entity::move(const float dirX, const float dirY, const float &dt)
 {
-    // this->shape.move(dirX * this->movementSpeed * dt, dirY * this->movementSpeed * dt);
-    if (this->sprite)
+    if (this->sprite && this->mouvement)
     {
-        this->sprite->move(dirX * this->movementSpeed * dt, dirY * this->movementSpeed * dt);
+        this->mouvement->move(dirX, dirY);
     }
 }
 
 void Entity::update(const float &dt)
 {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
+    if (this->mouvement)
     {
-        this->move(-1.f, 0.f, dt);
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-    {
-        this->move(1.f, 0.f, dt);
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
-    {
-        this->move(0.f, -1.f, dt);
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-    {
-        this->move(0.f, 1.f, dt);
+        this->mouvement->update(dt);
     }
 }
 

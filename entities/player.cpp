@@ -2,18 +2,19 @@
 
 void Player::initVariables()
 {
-    this->movementSpeed = 100.f;
+
 }
 
 void Player::initComponents()
 {
-
+    this->createMouvement(*this->sprite,200.f, 10.f, 4.f);
 }
 
 Player::Player(float x, float y, sf::Texture* texture_sheet)
 {
     this->initVariables();
     this->createSprite(texture_sheet);
+    this->initComponents();
     this->setPosition(x, y);
 }
 
@@ -23,6 +24,7 @@ Player::~Player()
 
 void Player::update(const float& dt)
 {
+    this->mouvement->update(dt);
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
     {

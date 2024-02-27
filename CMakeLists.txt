@@ -11,7 +11,7 @@ include_directories(include)
 
 file(GLOB SOURCES "src/*.cpp")
 
-add_executable(SFMLProject ${SOURCES} ../states/state.cpp ../states/gamestate.cpp ../states/mainmenustate.cpp ../entities/entity.cpp ../entities/player.cpp ../ressources/button.cpp)
+add_executable(SFMLProject ${SOURCES} ../states/state.cpp ../states/gamestate.cpp ../states/mainmenustate.cpp ../entities/entity.cpp ../entities/player.cpp ../components/mouvement.cpp ../ressources/button.cpp)
 
 # Link SFML to your target
 target_link_libraries(SFMLProject sfml-graphics sfml-audio)
